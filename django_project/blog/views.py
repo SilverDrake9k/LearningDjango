@@ -1,26 +1,7 @@
 from django.shortcuts import render
+from .models import Post
 # Create your views here.
 
-posts =[
-    {
-        'author':'Author 1',
-        'title': 'Title 1',
-        'content': 'Content 1',
-        'date_posted':'Date 1'
-    },
-    {
-        'author':'Author 2',
-        'title': 'Title 2',
-        'content': 'Content 2',
-        'date_posted':'Date 2'
-    },
-    {
-        'author':'Author 3',
-        'title': 'Title 3',
-        'content': 'Content 3',
-        'date_posted':'Date 3'
-    },
-]
 
 #handle from home page of blog
 def home(request):
@@ -31,7 +12,7 @@ def home(request):
     is called
     '''
     context = {
-        'posts':posts
+        'posts':Post.objects.all()
     }
     return render(request,'blog/home.html',context)
 
